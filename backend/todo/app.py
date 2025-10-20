@@ -7,8 +7,8 @@ app = Flask(__name__)
 CORS(app, origins=["http://localhost:5173"])
 
 # Database connection settings
-DB_HOST = os.getenv('DB_HOST', 'todo-postgres')
-DB_NAME = os.getenv('DB_NAME', 'todo_db')
+DB_HOST = os.getenv('DB_HOST', 'localhost')
+DB_NAME = os.getenv('DB_NAME', 'postgres')
 DB_USER = os.getenv('DB_USER', 'postgres')
 DB_PASS = os.getenv('DB_PASS', 'password')
 
@@ -23,7 +23,7 @@ def get_db_connection():
 
 @app.route('/todos', methods=['GET'])
 def get_todos():
-    print("hello")
+    print("Running /todos GET endpoint")
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute('SELECT id, title, completed FROM todos ORDER BY id;')
@@ -32,6 +32,7 @@ def get_todos():
     ]
     cur.close()
     conn.close()
+    print("Successfully fetched todos:", todos)
     return jsonify(todos)
 
 @app.route('/todos', methods=['POST'])
@@ -71,8 +72,8 @@ def delete_todo(todo_id):
     return '', 204
 
 if __name__ == '__main__':
-    import debugpy
+    # import debugpy
 
     # Enable remote debugging    
-    debugpy.listen(("0.0.0.0", 5678 ))
-    app.run(debug=True, host="0.0.0.0", port=5000)
+    # debugpy.listen(("0.0.0.0", 5678 ))
+    app.run(debug=True, host="0.0.0.0", port=5001)

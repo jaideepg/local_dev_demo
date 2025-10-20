@@ -1,0 +1,19 @@
+- Create Virtual Environment
+    - python3 -m venv .venv
+
+- Activate Virtual Environment
+    - source .venv/bin/activate
+
+- Pip Install Requirements
+    pip install -r requirements.txt
+
+- Start Flask App
+    python app.py
+
+
+- Postgres Info
+** Running on local machine.
+Host: localhost
+database:  Postgres
+user: postgres
+password:  paswword
