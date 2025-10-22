@@ -4,6 +4,9 @@ Local Vue App + Flask Services (ToDo, User) + Local PostgreSQL
 -- Copy FlaskContainerfile to root directory
     cp instructions/S_2/compose.yaml instructions/S_2/FlaskContainerfile instructions/S_2/nginx.conf instructions/S_2/NginxContainerfile .
 
+  -- Update URL to point to 5003 nginx port stores/todo.js
+  const API_URL = 'http://localhost:5003/todos';
+
 -- Start containers
     podman compose up --build
 
