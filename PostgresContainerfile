@@ -1,0 +1,7 @@
+FROM postgres:16
+ENV POSTGRES_DB=postgres
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PASSWORD=password
+COPY migrations/*.sql /test_db_data/*.sql docker-entrypoint-initdb.d/
+
+# initdb will copy all the files in this directory and run them to initialize the database

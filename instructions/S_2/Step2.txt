@@ -11,4 +11,7 @@ Local Vue App + Flask Services (ToDo, User) + Local PostgreSQL
     cd frontend
     npm run dev
 
+-- Update stores/todo.js
+    const API_URL = 'http://localhost:5003/todos'
+
 -- App Running Locally, Flask API Container, DB Local

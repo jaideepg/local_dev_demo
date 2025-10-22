@@ -4,7 +4,7 @@ import os
 from flask_cors import CORS  
 
 app = Flask(__name__)
-# CORS(app, origins=["http://localhost:5173"])
+CORS(app, origins=["http://localhost:5173"])
 
 # Database connection settings
 DB_HOST = os.getenv('DB_HOST', 'localhost')
@@ -21,7 +21,7 @@ def get_db_connection():
         password=DB_PASS
     )
 
-@app.route('/todos', methods=['GET'])
+@app.route('/user', methods=['GET'])
 def get_todos():
     print("Running /todos GET endpoint")
     conn = get_db_connection()
@@ -35,7 +35,7 @@ def get_todos():
     print("Successfully fetched todos:", todos)
     return jsonify(todos)
 
-@app.route('/todos', methods=['POST'])
+@app.route('/user', methods=['POST'])
 def add_todo():
     data = request.get_json()
     title = data.get('title')
@@ -48,7 +48,7 @@ def add_todo():
     conn.close()
     return jsonify({'id': todo_id, 'title': title, 'completed': False}), 201
 
-@app.route('/todos/<int:todo_id>', methods=['PUT'])
+@app.route('/user/<int:todo_id>', methods=['PUT'])
 def update_todo(todo_id):
     data = request.get_json()
     title = data.get('title')
@@ -76,4 +76,4 @@ if __name__ == '__main__':
 
     # Enable remote debugging    
     # debugpy.listen(("0.0.0.0", 5678 ))
-    app.run(debug=True, host="0.0.0.0", port=5001)
+    app.run(debug=True, host="0.0.0.0", port=5002)
