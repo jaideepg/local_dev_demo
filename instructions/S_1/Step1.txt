@@ -17,7 +17,7 @@ Local Vue App + Local Flask App + Local PostgreSQL
 
 - Start Flask App
     cd backend/todo
-    python app.py
+    python3 app.py
 
 - Start Frontend
     cd frontend
@@ -34,3 +34,7 @@ Host: localhost
 database:  Postgres
 user: postgres
 password:  paswword
+
+-- Current Issues
+ - My python version is 3.14, but my project expect 3.11
+ - I had to create my own virutal environment and install requirements

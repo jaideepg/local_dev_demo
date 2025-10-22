@@ -1,0 +1,28 @@
+Local Vue App + Containerized Flask Services (ToDo, User) + Local PostgreSQL
+-- Build Container For PostgreSQL
+
+-- Copy PostgresContainerFile to root directory
+    cp instructions/S_3/postgres.env instructions/S_3/PostgresContainerfile instructions/S_3/compose.yaml .
+
+-- Update FlaskContainerfile
+    ENV DB_HOST=postgres
+    ENV DB_PORT=5432
+
+-- Rebuild containers
+    podman compose down
+    podman compose up --build
+
+-- Start Frontend
+    cd frontend
+    npm run dev
+
+-- To remove postgres volume
+    podman volume rm local_dev_demo_pgdata
+
+
+-- Benefits
+    -- Scripts & Test data automagically loaded
+    -- Postgres version is defined
+    -- Easy cleanup process to restart with clean data
+    -- Ability to keep data via. volume
+    

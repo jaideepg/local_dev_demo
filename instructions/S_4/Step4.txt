@@ -1,0 +1,5 @@
+Local Vue App + Containerized Flask Services (ToDo, User) + Containerized PostgreSQL
+-- Add make command
+
+-- Copy Make File
+    cp instructions/S_4/Makefile .
