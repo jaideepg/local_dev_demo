@@ -17,6 +17,10 @@ Local Vue App + Local Flask App + Local PostgreSQL
     cd frontend
     npm run dev
 
+- Add A Users Service
+    cd backend
+    cp -r todo user
+    Copy app.py
 
 - Postgres Info
 ** Running on local machine.
