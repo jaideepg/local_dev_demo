@@ -1,4 +1,6 @@
 Local Vue App + Local Flask App + Local PostgreSQL
+-- Add User Service
+
 
 - Create Virtual Environment
     - python3 -m venv .venv
