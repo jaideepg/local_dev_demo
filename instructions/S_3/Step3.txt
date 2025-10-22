@@ -18,3 +18,11 @@ Local Vue App + Containerized Flask Services (ToDo, User) + Local PostgreSQL
 
 -- To remove postgres volume
     podman volume rm local_dev_demo_pgdata
+
+
+-- Benefits
+    -- Scripts & Test data automagically loaded
+    -- Postgres version is defined
+    -- Easy cleanup process to restart with clean data
+    -- Ability to keep data via. volume
+    

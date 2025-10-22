@@ -15,3 +15,9 @@ Local Vue App + Flask Services (ToDo, User) + Local PostgreSQL
     npm run dev
 
 -- App Running Locally, Flask API Container, DB Local
+
+-- Benefits
+  -- Correct python version running in each Services
+  -- One command to spin up all containers
+  -- All logs coming in 1 terminal
+  -- Ability to edit code and have it reflect in containers
