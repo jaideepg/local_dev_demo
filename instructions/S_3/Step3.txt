@@ -16,6 +16,10 @@ Local Vue App + Containerized Flask Services (ToDo, User) + Local PostgreSQL
     cd frontend
     npm run dev
 
+-- Uncomment Postgres Volume
+    podman compose down -v
+    podman compose up --build    
+
 -- To remove postgres volume
     podman volume rm local_dev_demo_pgdata
 
