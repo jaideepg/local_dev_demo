@@ -72,8 +72,20 @@ def delete_todo(todo_id):
     return '', 204
 
 if __name__ == '__main__':
-    # import debugpy
+    import debugpy
+    import os
 
-    # Enable remote debugging    
-    # debugpy.listen(("0.0.0.0", 5678 ))
+    debug_mode = os.getenv("FLASK_DEBUG", "0") == "1"
+    print(f"Debug mode is {'on' if debug_mode else 'off'}")
+
+    # Only start debugpy in the reloader's *child* process
+    if os.environ.get("WERKZEUG_RUN_MAIN") == "true":
+        print("Starting debugpy on port 5678...")
+        debugpy.listen(("0.0.0.0", 5678))
+        print("✅ debugpy is listening on port 5678")
+        if debug_mode:
+            print("Waiting for debugger to attach...")
+            debugpy.wait_for_client()
+
+    # Run Flask
     app.run(debug=True, host="0.0.0.0", port=5000)

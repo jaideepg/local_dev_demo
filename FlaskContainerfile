@@ -23,4 +23,4 @@ ENV DB_HOST=host.docker.internal
 ENV DB_PORT=5432
 
 # Command to run the Flask app
-CMD ["flask", "run"]
+CMD ["python", "app.py"]

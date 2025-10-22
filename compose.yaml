@@ -9,6 +9,7 @@ services:
         SERVICE_NAME: todo
     ports:
       - "5001:5000"    # 5001 on host maps to 5000 in container
+      - "5672:5678"  # For debugging with debugpy
     volumes: # Attach a volume so code changes reflect immediately
       - ./backend/todo:/app
 

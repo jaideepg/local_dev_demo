@@ -14,7 +14,60 @@ Local Vue App + Flask Services (ToDo, User) + Local PostgreSQL
     cd frontend
     npm run dev
 
--- App Running Locally, Flask API Container, DB Local
+-- App Running Locally, Flask API Container, DB Local (No Debug)
+
+-- Add Debugging Locally
+  Add to compose.yaml
+  - "5672:5678"  # For debugging with debugpy
+
+  Update FlaskContainerfile
+  CMD ["python", "app.py"]
+
+  Update app.py
+  if __name__ == '__main__':
+    import debugpy
+    import os
+
+    debug_mode = os.getenv("FLASK_DEBUG", "0") == "1"
+    print(f"Debug mode is {'on' if debug_mode else 'off'}")
+
+    # Only start debugpy in the reloader's *child* process
+    if os.environ.get("WERKZEUG_RUN_MAIN") == "true":
+        print("Starting debugpy on port 5678...")
+        debugpy.listen(("0.0.0.0", 5678))
+        print("✅ debugpy is listening on port 5678")
+        if debug_mode:
+            print("Waiting for debugger to attach...")
+            debugpy.wait_for_client()
+
+    # Run Flask
+    app.run(debug=True, host="0.0.0.0", port=5000)
+
+  Create launch.json
+  {
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Attach to Flask in Podman",
+      "type": "debugpy",
+      "request": "attach",
+      "connect": {
+        "host": "0.0.0.0",
+        "port": 5672
+      },
+      "pathMappings": [
+        {
+          "localRoot": "${workspaceFolder}/backend/todo",
+          "remoteRoot": "/app"
+        }
+      ],
+      "justMyCode": false,
+      "subProcess": false
+    }
+  ]
+}
+
+
 
 -- Benefits
   -- Correct python version running in each Services
