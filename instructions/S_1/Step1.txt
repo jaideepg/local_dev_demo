@@ -7,10 +7,15 @@ Local Vue App + Local Flask App + Local PostgreSQL
     - source .venv/bin/activate
 
 - Pip Install Requirements
-    pip install -r requirements.txt
+    pip install -r requirements-dev.txt
 
 - Start Flask App
+    cd backend/todo
     python app.py
+
+- Start Frontend
+    cd frontend
+    npm run dev
 
 
 - Postgres Info
