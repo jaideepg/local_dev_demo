@@ -1,0 +1,23 @@
+Local Vue App + Flask Services (ToDo, User) + Local PostgreSQL
+-- Build Python Container For Flask Services
+
+-- Copy FlaskContainerfile to root directory
+    cp instructions/S_2/compose.yaml instructions/S_2/FlaskContainerfile instructions/S_2/nginx.conf instructions/S_2/NginxContainerfile .
+
+  -- Update URL to point to 5003 nginx port stores/todo.js
+  const API_URL = 'http://localhost:5003/todos';
+
+-- Start containers
+    podman compose up --build
+
+-- Start Frontend
+    cd frontend
+    npm run dev
+
+-- App Running Locally, Flask API Container, DB Local
+
+-- Benefits
+  -- Correct python version running in each Services
+  -- One command to spin up all containers
+  -- All logs coming in 1 terminal
+  -- Ability to edit code and have it reflect in containers
