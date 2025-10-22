@@ -6,7 +6,7 @@ help:
 	  sed -E 's/^([a-zA-Z0-9_-]+):.*# ?(.*)/\1|\2/' | \
 	  awk -F'|' '{printf "  make %-22s %s\n", $$1, $$2}'
 
-.PHONY: virtualenv
+.PHONY: venv
 venv:   # Create Python virtual environment if missing
 	@if [ ! -d ".venv" ]; then \
 		echo "Creating Python virtual environment..."; \
@@ -42,3 +42,7 @@ lint: # Run Python linter
 .PHONY: lint-frontend
 lint-frontend: # Run frontend linter
 	cd frontend && npm run lint
+
+.PHONY: test
+test: # Run Python tests with PYTHONPATH set
+	PYTHONPATH=backend pytest backend/tests
