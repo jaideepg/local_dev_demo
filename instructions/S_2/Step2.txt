@@ -1,0 +1,3 @@
+Local Vue App + Flask Services (ToDo, User) + Local PostgreSQL
+-- Build Python Container For Flask Services
+
