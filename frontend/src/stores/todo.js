@@ -3,7 +3,7 @@ import { ref } from 'vue'
 
 export const useTodoStore = defineStore('todo', () => {
   const todos = ref([])
-  const API_URL = 'http://localhost:5001/todos'
+  const API_URL = 'http://localhost:5003/todos'
 
   async function fetchTodos() {
     const res = await fetch(API_URL)

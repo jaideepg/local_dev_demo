@@ -1,0 +1,36 @@
+version: "3.9"
+
+services:
+  todo-service:
+    build:
+      context: .
+      dockerfile: FlaskContainerfile
+      args:
+        SERVICE_NAME: todo
+    ports:
+      - "5001:5000"    # 5001 on host maps to 5000 in container
+    volumes:
+      - ./backend/todo:/app
+
+
+  user-service:
+    build:
+      context: .
+      dockerfile: FlaskContainerfile
+      args:
+        SERVICE_NAME: user
+    ports:
+      - "5002:5000"    # 5002 on host maps to 5000 in container
+    volumes:
+      - ./backend/user:/app
+
+
+  nginx:
+    build:
+      context: .
+      dockerfile: NginxContainerfile    
+    ports:
+      - "5003:80"  # Nginx port
+    depends_on:
+      - user-service
+      - todo-service
