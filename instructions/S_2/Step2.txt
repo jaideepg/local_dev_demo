@@ -1,3 +1,14 @@
 Local Vue App + Flask Services (ToDo, User) + Local PostgreSQL
 -- Build Python Container For Flask Services
 
+-- Copy FlaskContainerfile to root directory
+    cp instructions/S_2/compose.yaml instructions/S_2/FlaskContainerfile instructions/S_2/nginx.conf instructions/S_2/NginxContainerfile .
+
+-- Start containers
+    podman compose up --build
+
+-- Start Frontend
+    cd frontend
+    npm run dev
+
+-- App Running Locally, Flask API Container, DB Local
