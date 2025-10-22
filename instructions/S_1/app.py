@@ -61,7 +61,7 @@ def update_todo(todo_id):
     conn.close()
     return jsonify({'id': todo_id, 'title': title, 'completed': completed})
 
-@app.route('/todos/<int:todo_id>', methods=['DELETE'])
+@app.route('/user/<int:todo_id>', methods=['DELETE'])
 def delete_todo(todo_id):
     conn = get_db_connection()
     cur = conn.cursor()
