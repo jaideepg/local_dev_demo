@@ -11,6 +11,10 @@ Local Vue App + Local Flask App + Local PostgreSQL
 - Pip Install Requirements
     pip install -r requirements-dev.txt
 
+- Npm Install 
+    New Terimal --> cd frontend 
+    npm install
+
 - Start Flask App
     cd backend/todo
     python app.py
