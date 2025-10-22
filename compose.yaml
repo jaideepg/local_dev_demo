@@ -9,7 +9,7 @@ services:
         SERVICE_NAME: todo
     ports:
       - "5001:5000"    # 5001 on host maps to 5000 in container
-    volumes:
+    volumes: # Attach a volume so code changes reflect immediately
       - ./backend/todo:/app
 
 
@@ -21,7 +21,7 @@ services:
         SERVICE_NAME: user
     ports:
       - "5002:5000"    # 5002 on host maps to 5000 in container
-    volumes:
+    volumes:  # Attach a volume so code changes reflect immediately
       - ./backend/user:/app
 
 
